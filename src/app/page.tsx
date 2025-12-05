@@ -1,6 +1,7 @@
-import Categories from "@/components/navbar/homepage/categories";
-import Herosection from "@/components/navbar/homepage/Herosection";
-import Promosection from "@/components/navbar/homepage/Promosection";
+import Categories from "@/components/homepage/categories";
+import FarmerlabelSection from "@/components/homepage/FarmerlabelSection";
+import Herosection from "@/components/homepage/Herosection";
+import Promosection from "@/components/homepage/Promosection";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
       <Herosection />
       <Categories />
       <Promosection />
-      <div className="h-[300px] w-full bg-cyan-700"></div>
+      <FarmerlabelSection />
     </div>
   );
 }

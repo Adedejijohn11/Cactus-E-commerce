@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 const Promosection = () => {
   return (
     <div className=" mt-10 mx-10  ">
-      <div className=" flex gap-30 h-[500px] w-full p-8   bg-orange-600 text-white rounded-2xl">
+      <div className="flex gap-30 h-[500px] w-full p-8   bg-orange-600 text-white rounded-2xl shadow-2xl shadow-gray-500">
         <div className=" w-[60%]">
           <div className=" relative h-8 w-[200px] flex items-center  justify-center  gap-3   rounded-2xl overflow-hidden ">
             <FaFire />
