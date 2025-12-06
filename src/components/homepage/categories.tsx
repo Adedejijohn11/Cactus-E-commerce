@@ -1,5 +1,6 @@
 import Image from "next/image";
-import React from "react";
+import { FaArrowRight } from "react-icons/fa";
+import { GiFarmer } from "react-icons/gi";
 
 const Categories = () => {
   return (
@@ -13,8 +14,9 @@ const Categories = () => {
           everyday essentails
         </p>
       </div>
-      <div className="h-[300px] w-[1400px] mt-5">
-        <div className="relative h-full w-[500px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
+      {/* cards */}
+      <div className="h-[280px] w-[1400px] mt-5">
+        <div className="relative h-full w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
           <div className="h-[300px]">
             <Image
               src="/images/cart-grocery.jpg"
@@ -24,9 +26,15 @@ const Categories = () => {
               className="h-full w-full bg-cover bg-center mr-5 transition-transform duration-300 hover:scale-110"
             />
           </div>
-          {/* <div className="absolute top-0 h-[300px] w-full bg-black opacity-40 "></div> */}
-          <div className=" absolute bottom-0 h-[100px] w-full bg-white">
-            <h3>categories</h3>
+          <div className="absolute bottom-0 h-20 w-full flex items-center justify-between px-8  bg-white">
+            <div className="flex items-center gap-2">
+              <div className=" flex justify-center items-center  bg-green-200 h-9 w-9 rounded-full">
+                <GiFarmer className=" text-greencolor text-2xl" />
+              </div>
+              <h3 className="text-[18px] font-bold">Categories</h3>
+            </div>
+
+            <FaArrowRight className="text-gray-400" />
           </div>
         </div>
       </div>

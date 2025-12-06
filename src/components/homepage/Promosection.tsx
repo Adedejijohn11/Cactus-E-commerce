@@ -41,6 +41,7 @@ const Promosection = () => {
           </div>
         </div>
 
+        {/* Cards */}
         <div className="w-[40%] h-full flex items-center justify-center gap-5">
           <div className="relative h-[200px] w-[200px] rounded-2xl overflow-hidden">
             <Image
