@@ -25,7 +25,12 @@ const WeeklyPromotionsPage = () => {
           <div className="text-center py-20">
             <p className="text-gray-600">Loading promotions...</p>
           </div>
-        ) : isTimedOut || saleProducts === undefined || saleProducts.length === 0 ? (
+        ) : saleProducts === undefined ? (
+          <div className="text-center py-20">
+            <p className="text-lg text-gray-600 mb-2">No products on sale at the moment</p>
+            <p className="text-sm text-gray-500">Check back soon for new promotions!</p>
+          </div>
+        ) : saleProducts.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-lg text-gray-600 mb-2">No products on sale at the moment</p>
             <p className="text-sm text-gray-500">Check back soon for new promotions!</p>

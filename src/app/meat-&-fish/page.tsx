@@ -19,7 +19,12 @@ const MeatFishPage = () => {
           <div className="text-center py-20">
             <p className="text-gray-600">Loading products...</p>
           </div>
-        ) : isTimedOut || products === undefined || products.length === 0 ? (
+        ) : products === undefined ? (
+          <div className="text-center py-20">
+            <p className="text-lg text-gray-600 mb-2">No products found in this category</p>
+            <p className="text-sm text-gray-500">Check back soon for new products!</p>
+          </div>
+        ) : products.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-lg text-gray-600 mb-2">No products found in this category</p>
             <p className="text-sm text-gray-500">Check back soon for new products!</p>

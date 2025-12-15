@@ -37,7 +37,12 @@ const SearchContent = () => {
           <div className="text-center py-20">
             <p className="text-gray-600">Searching...</p>
           </div>
-        ) : isTimedOut || searchResults === undefined || searchResults.length === 0 ? (
+        ) : searchResults === undefined ? (
+          <div className="text-center py-20">
+            <p className="text-lg text-gray-600 mb-2">No products found for &quot;{query}&quot;</p>
+            <p className="text-sm text-gray-500">Try a different search term</p>
+          </div>
+        ) : searchResults.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-lg text-gray-600 mb-2">No products found for &quot;{query}&quot;</p>
             <p className="text-sm text-gray-500">Try a different search term</p>

@@ -24,7 +24,15 @@ const ProductsPage = () => {
           <div className="text-center py-20">
             <p className="text-lg text-gray-600">Loading products...</p>
           </div>
-        ) : isTimedOut || products === undefined || products.length === 0 ? (
+        ) : products === undefined ? (
+          // Still loading but timed out - show no products
+          <div className="text-center py-20">
+            <p className="text-lg text-gray-600 mb-2">No products available</p>
+            <p className="text-sm text-gray-500">
+              Check back soon for new products!
+            </p>
+          </div>
+        ) : products.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-lg text-gray-600 mb-2">No products available</p>
             <p className="text-sm text-gray-500">

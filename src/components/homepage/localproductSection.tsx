@@ -24,7 +24,11 @@ const LocalproductSection = () => {
         <div className="w-full max-w-7xl flex items-center justify-center gap-3 mt-7">
           <p className="text-gray-600">Loading local products...</p>
         </div>
-      ) : isTimedOut || localProducts === undefined || localProducts.length === 0 ? (
+      ) : localProducts === undefined ? (
+        <div className="w-full max-w-7xl flex items-center justify-center gap-3 mt-7">
+          <p className="text-gray-600">No local products available</p>
+        </div>
+      ) : localProducts.length === 0 ? (
         <div className="w-full max-w-7xl flex items-center justify-center gap-3 mt-7">
           <p className="text-gray-600">No local products available</p>
         </div>

@@ -66,7 +66,12 @@ const Promosection = () => {
         <div className="w-full md:w-[40%] flex items-center justify-center gap-4 md:gap-5 flex-wrap">
           {isLoading ? (
             <div className="text-white">Loading...</div>
-          ) : isTimedOut || saleProducts === undefined || saleProducts.length === 0 ? (
+          ) : saleProducts === undefined ? (
+            <div className="text-white text-center">
+              <p>No products on sale</p>
+              <p className="text-sm text-gray-200 mt-1">Check back soon!</p>
+            </div>
+          ) : saleProducts.length === 0 ? (
             <div className="text-white text-center">
               <p>No products on sale</p>
               <p className="text-sm text-gray-200 mt-1">Check back soon!</p>
