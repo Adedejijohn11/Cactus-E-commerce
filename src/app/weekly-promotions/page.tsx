@@ -3,10 +3,12 @@
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import ProductCard from "@/components/Ui/ProductCard";
+import { useQueryWithTimeout } from "@/hooks/useQueryWithTimeout";
 
 const WeeklyPromotionsPage = () => {
   const saleProducts = useQuery(api.frontend.promotions.getProductsOnSale, {});
   const promoStats = useQuery(api.frontend.promotions.getStats);
+  const { isLoading, isTimedOut } = useQueryWithTimeout(saleProducts);
 
   return (
     <div className="min-h-screen w-full px-5 mt-[90px] py-10">
@@ -19,13 +21,14 @@ const WeeklyPromotionsPage = () => {
             </p>
           )}
         </div>
-        {saleProducts === undefined ? (
+        {isLoading ? (
           <div className="text-center py-20">
-            <p>Loading promotions...</p>
+            <p className="text-gray-600">Loading promotions...</p>
           </div>
-        ) : saleProducts.length === 0 ? (
+        ) : isTimedOut || saleProducts === undefined || saleProducts.length === 0 ? (
           <div className="text-center py-20">
-            <p>No products on sale at the moment</p>
+            <p className="text-lg text-gray-600 mb-2">No products on sale at the moment</p>
+            <p className="text-sm text-gray-500">Check back soon for new promotions!</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

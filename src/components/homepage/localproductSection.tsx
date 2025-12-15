@@ -3,9 +3,11 @@
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import ProductCard from "@/components/Ui/ProductCard";
+import { useQueryWithTimeout } from "@/hooks/useQueryWithTimeout";
 
 const LocalproductSection = () => {
   const localProducts = useQuery(api.frontend.products.getLocal);
+  const { isLoading, isTimedOut } = useQueryWithTimeout(localProducts);
 
   return (
     <div
@@ -18,11 +20,11 @@ const LocalproductSection = () => {
       </div>
 
       {/* Cards */}
-      {localProducts === undefined ? (
+      {isLoading ? (
         <div className="w-full max-w-7xl flex items-center justify-center gap-3 mt-7">
           <p className="text-gray-600">Loading local products...</p>
         </div>
-      ) : localProducts.length === 0 ? (
+      ) : isTimedOut || localProducts === undefined || localProducts.length === 0 ? (
         <div className="w-full max-w-7xl flex items-center justify-center gap-3 mt-7">
           <p className="text-gray-600">No local products available</p>
         </div>

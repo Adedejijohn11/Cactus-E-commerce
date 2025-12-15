@@ -6,12 +6,14 @@ import { FaFire } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import ProductCard from "@/components/Ui/ProductCard";
+import { useQueryWithTimeout } from "@/hooks/useQueryWithTimeout";
 
 const Promosection = () => {
   const promoStats = useQuery(api.frontend.promotions.getStats);
   const saleProducts = useQuery(api.frontend.promotions.getProductsOnSale, {
     limit: 2,
   });
+  const { isLoading, isTimedOut } = useQueryWithTimeout(saleProducts);
 
   const maxDiscount = promoStats?.maxDiscount || 30;
   const totalProducts = promoStats?.totalProductsOnSale || 50;
@@ -62,10 +64,13 @@ const Promosection = () => {
 
         {/* Cards */}
         <div className="w-full md:w-[40%] flex items-center justify-center gap-4 md:gap-5 flex-wrap">
-          {saleProducts === undefined ? (
+          {isLoading ? (
             <div className="text-white">Loading...</div>
-          ) : saleProducts.length === 0 ? (
-            <div className="text-white">No products on sale</div>
+          ) : isTimedOut || saleProducts === undefined || saleProducts.length === 0 ? (
+            <div className="text-white text-center">
+              <p>No products on sale</p>
+              <p className="text-sm text-gray-200 mt-1">Check back soon!</p>
+            </div>
           ) : (
             saleProducts.slice(0, 2).map((product) => {
               const discount =
