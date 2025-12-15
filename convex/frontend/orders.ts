@@ -5,36 +5,75 @@ import { v } from "convex/values";
 export const getByOrderId = query({
   args: { orderId: v.string() },
   handler: async (ctx, args) => {
-    const order = await ctx.db
-      .query("orders")
-      .filter((q) => q.eq(q.field("orderId"), args.orderId))
-      .first();
-    
-    if (!order) {
-      return null;
+    try {
+      // Use index for better performance
+      const order = await ctx.db
+        .query("orders")
+        .withIndex("by_orderId", (q) => q.eq("orderId", args.orderId))
+        .first();
+      
+      if (!order) {
+        return null;
+      }
+
+      // Get sales/order items for this order
+      const sales = await ctx.db
+        .query("sales")
+        .withIndex("by_order", (q) => q.eq("orderId", args.orderId))
+        .collect();
+
+      // Enrich with product data
+      const items = await Promise.all(
+        sales.map(async (sale) => {
+          try {
+            const product = sale.productId ? await ctx.db.get(sale.productId) : null;
+            return {
+              _id: sale._id,
+              productId: sale.productId,
+              quantity: sale.quantity,
+              price: sale.price,
+              total: sale.total,
+              orderId: sale.orderId,
+              createdAt: sale.createdAt,
+              product: product || null,
+            };
+          } catch (error) {
+            // If product lookup fails, return sale without product
+            console.error(`Error fetching product ${sale.productId}:`, error);
+            return {
+              _id: sale._id,
+              productId: sale.productId,
+              quantity: sale.quantity,
+              price: sale.price,
+              total: sale.total,
+              orderId: sale.orderId,
+              createdAt: sale.createdAt,
+              product: null,
+            };
+          }
+        })
+      );
+
+      return {
+        _id: order._id,
+        orderId: order.orderId,
+        customerEmail: order.customerEmail,
+        customerName: order.customerName,
+        shippingAddress: order.shippingAddress,
+        storeLocationId: order.storeLocationId,
+        status: order.status,
+        subtotal: order.subtotal,
+        pickupFee: order.pickupFee,
+        total: order.total,
+        paymentMethod: order.paymentMethod,
+        createdAt: order.createdAt,
+        updatedAt: order.updatedAt,
+        items,
+      };
+    } catch (error) {
+      console.error("Error in getByOrderId:", error);
+      throw new Error(`Failed to fetch order: ${error instanceof Error ? error.message : String(error)}`);
     }
-
-    // Get sales/order items for this order
-    const sales = await ctx.db
-      .query("sales")
-      .withIndex("by_order", (q) => q.eq("orderId", args.orderId))
-      .collect();
-
-    // Enrich with product data
-    const items = await Promise.all(
-      sales.map(async (sale) => {
-        const product = await ctx.db.get(sale.productId);
-        return {
-          ...sale,
-          product: product || null,
-        };
-      })
-    );
-
-    return {
-      ...order,
-      items,
-    };
   },
 });
 
