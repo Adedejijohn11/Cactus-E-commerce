@@ -14,7 +14,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'reminiscent-pigeon-138.convex.cloud',
+        hostname: 'different-leopard-911.convex.cloud',
         pathname: '/api/storage/**',
       },
       {

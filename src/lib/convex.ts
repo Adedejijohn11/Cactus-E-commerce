@@ -7,8 +7,8 @@ const convexUrl = process.env.NEXT_PUBLIC_CONVEX_URL;
 if (!convexUrl) {
   const isProduction = typeof window !== "undefined" && window.location.hostname !== "localhost";
   const message = isProduction
-    ? "🚨 CRITICAL: Missing NEXT_PUBLIC_CONVEX_URL in production. Set it in Vercel: Settings → Environment Variables → Add NEXT_PUBLIC_CONVEX_URL = https://reminiscent-pigeon-138.convex.cloud"
-    : "⚠️  Missing NEXT_PUBLIC_CONVEX_URL. Add it to .env.local: NEXT_PUBLIC_CONVEX_URL=https://reminiscent-pigeon-138.convex.cloud";
+    ? "🚨 CRITICAL: Missing NEXT_PUBLIC_CONVEX_URL in production. Set it in Vercel: Settings → Environment Variables → Add NEXT_PUBLIC_CONVEX_URL = https://different-leopard-911.convex.cloud"
+    : "⚠️  Missing NEXT_PUBLIC_CONVEX_URL. Add it to .env.local: NEXT_PUBLIC_CONVEX_URL=https://different-leopard-911.convex.cloud";
   
   console.error(message);
 }
