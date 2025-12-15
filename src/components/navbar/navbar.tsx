@@ -263,10 +263,10 @@ const Navbar = () => {
         <Menu />
       </div>
 
-      {/* Overlay for mobile menu */}
+      {/* Overlay for category menu - closes menu when clicking outside */}
       {showMenu && (
         <div
-          className="fixed inset-0 z-40 bg-transparent md:hidden"
+          className="fixed inset-0 z-40 bg-transparent"
           onClick={() => onToggle("close_categories")}
         />
       )}
