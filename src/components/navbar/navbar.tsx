@@ -260,7 +260,7 @@ const Navbar = () => {
       {/* Overlay for mobile menu */}
       {showMenu && (
         <div
-          className="fixed inset-0 z-40 bg-black bg-opacity-50 md:hidden"
+          className="fixed inset-0 z-40 bg-transparent md:hidden"
           onClick={() => onToggle("close_categories")}
         />
       )}
