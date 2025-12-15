@@ -23,7 +23,7 @@ const Categories = () => {
         <Link href="/localproducts" className="relative h-[280px] w-full sm:w-[350px] md:w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer transition-all">
           <div className="h-[300px]">
             <Image
-              src="/images/cart-grocery.jpg"
+              src="/images/local-product.jpg"
               alt="/"
               width={600}
               height={200}
@@ -44,7 +44,7 @@ const Categories = () => {
         <Link href="/fruits-&-vegetables" className="relative h-[280px] w-full sm:w-[350px] md:w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer transition-all">
           <div className="h-[300px]">
             <Image
-              src="/images/cart-grocery.jpg"
+              src="/images/fruit&vegetables.jpg"
               alt="/"
               width={600}
               height={200}
@@ -65,7 +65,7 @@ const Categories = () => {
         <Link href="/bakery" className="relative h-[280px] w-full sm:w-[350px] md:w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer transition-all">
           <div className="h-[300px]">
             <Image
-              src="/images/cart-grocery.jpg"
+              src="/images/bakery.jpg"
               alt="/"
               width={600}
               height={200}
