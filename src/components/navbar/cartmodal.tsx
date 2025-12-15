@@ -70,11 +70,12 @@ const Cartmodal = () => {
         customerEmail: "customer@example.com", // You can add a form for this
         customerName: "Guest", // You can add a form for this
       });
+      // Close cart modal before navigating
+      onToggle("close_modal");
       router.push(`/order-confirmation/${result.orderId}`);
     } catch (error) {
       console.error("Checkout failed:", error);
       alert("Checkout failed. Please try again.");
-    } finally {
       setIsProcessing(false);
     }
   };
