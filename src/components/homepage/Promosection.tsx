@@ -62,8 +62,8 @@ const Promosection = () => {
           </div>
         </div>
 
-        {/* Cards */}
-        <div className="w-full md:w-[40%] flex items-center justify-center gap-4 md:gap-5 flex-wrap">
+        {/* Cards - always in a row, max 2 products */}
+        <div className="w-full md:w-[40%] flex flex-row items-stretch justify-center gap-4 md:gap-5">
           {isLoading ? (
             <div className="text-white">Loading...</div>
           ) : saleProducts === undefined ? (
@@ -87,7 +87,10 @@ const Promosection = () => {
                     )
                   : 0;
               return (
-                <div key={product._id} className="scale-75">
+                <div
+                  key={product._id}
+                  className="scale-75 w-1/2 flex-shrink-0 flex-grow-0 flex justify-center"
+                >
                   <ProductCard product={product} discount={discount} />
                 </div>
               );
