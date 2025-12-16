@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { GiFarmer } from "react-icons/gi";
+import { useGlobalContext } from "../context/globalContext";
 
 const Categories = () => {
+  const { onToggle } = useGlobalContext();
   return (
     <div
       id="Categories"
@@ -82,14 +84,15 @@ const Categories = () => {
         </Link>
       </div>
       <div className="mt-7">
-        <Link href="/products">
-          <button className="flex items-center gap-4 bg-black text-white py-4 px-8 rounded-2xl hover:bg-gray-800 transition-all cursor-pointer">
-            View All Categories
-            <span>
-              <FaArrowRight className="text-white" />
-            </span>
-          </button>
-        </Link>
+        <button
+          onClick={() => onToggle("cartegories_modal")}
+          className="flex items-center gap-4 bg-black text-white py-4 px-8 rounded-2xl hover:bg-gray-800 transition-all cursor-pointer"
+        >
+          View All Categories
+          <span>
+            <FaArrowRight className="text-white" />
+          </span>
+        </button>
       </div>
     </div>
   );
