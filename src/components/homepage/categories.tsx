@@ -22,7 +22,7 @@ const Categories = () => {
         <div className="relative h-full w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
           <div className="h-[300px]">
             <Image
-              src="/images/cart-grocery.jpg"
+              src="/images/local_product.jpg"
               alt="/"
               width={600}
               height={200}
@@ -43,7 +43,7 @@ const Categories = () => {
         <div className="relative h-full w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
           <div className="h-[300px]">
             <Image
-              src="/images/cart-grocery.jpg"
+              src="/images/fruit&vegetables.jpg"
               alt="/"
               width={600}
               height={200}
@@ -64,7 +64,7 @@ const Categories = () => {
         <div className="relative h-full w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
           <div className="h-[300px]">
             <Image
-              src="/images/cart-grocery.jpg"
+              src="/images/bakery.jpg"
               alt="/"
               width={600}
               height={200}

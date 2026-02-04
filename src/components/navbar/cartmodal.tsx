@@ -33,7 +33,7 @@ const Cartmodal = () => {
         <div className="flex gap-2 h-30 w-[350px] p-2 bg-gray-100">
           <div className="h-24 w-30 ">
             <Image
-              src="/images/cart-grocery.jpg"
+              src="/images/local_product.jpg"
               alt="/"
               width={600}
               height={200}
