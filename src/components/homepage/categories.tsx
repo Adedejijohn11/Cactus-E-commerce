@@ -1,12 +1,17 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 import { GiFarmer } from "react-icons/gi";
+import { useGlobalContext } from "../context/globalContext";
 
 const Categories = () => {
+  const { onToggle } = useGlobalContext();
   return (
     <div
       id="Categories"
-      className="h-[500px] w-full flex flex-col items-center mt-30 "
+      className="min-h-[80vh] w-full flex flex-col items-center justify-center py-16 px-4"
     >
       <div className="flex flex-col items-center">
         <h1 className="text-3xl font-bold text-greencolor">
@@ -18,15 +23,17 @@ const Categories = () => {
         </p>
       </div>
       {/* cards */}
-      <div className="h-[280px] w-[1400px] mt-10 flex items-center justify-center  gap-2 ">
-        <div className="relative h-full w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
-          <div className="h-[300px]">
+      <div className="w-full max-w-7xl mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+        <Link
+          href="/localproducts"
+          className="relative h-[280px] w-full sm:w-[350px] md:w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer transition-all"
+        >
+          <div className="h-full w-full relative">
             <Image
-              src="/images/local_product.jpg"
-              alt="/"
-              width={600}
-              height={200}
-              className="h-full w-full bg-cover bg-center mr-5 transition-transform duration-300 hover:scale-110"
+              src="/images/local-product.jpg"
+              alt="Local Products"
+              fill
+              className="object-cover object-center transition-transform duration-300 hover:scale-110"
             />
           </div>
           <div className="absolute bottom-0 h-20 w-full flex items-center justify-between px-8  bg-white">
@@ -39,15 +46,17 @@ const Categories = () => {
 
             <FaArrowRight className="text-gray-400" />
           </div>
-        </div>
-        <div className="relative h-full w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
-          <div className="h-[300px]">
+        </Link>
+        <Link
+          href="/fruits-&-vegetables"
+          className="relative h-[280px] w-full sm:w-[350px] md:w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer transition-all"
+        >
+          <div className="h-full w-full relative">
             <Image
               src="/images/fruit&vegetables.jpg"
-              alt="/"
-              width={600}
-              height={200}
-              className="h-full w-full bg-cover bg-center mr-5 transition-transform duration-300 hover:scale-110"
+              alt="Fruits and Vegetables"
+              fill
+              className="object-cover object-center transition-transform duration-300 hover:scale-110"
             />
           </div>
           <div className="absolute bottom-0 h-20 w-full flex items-center justify-between px-8  bg-white">
@@ -60,15 +69,17 @@ const Categories = () => {
 
             <FaArrowRight className="text-gray-400" />
           </div>
-        </div>
-        <div className="relative h-full w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500  overflow-hidden">
-          <div className="h-[300px]">
+        </Link>
+        <Link
+          href="/bakery"
+          className="relative h-[280px] w-full sm:w-[350px] md:w-[400px] rounded-2xl border-2 border-gray-400 hover:border-green-400 shadow-2xl shadow-gray-500 overflow-hidden cursor-pointer transition-all"
+        >
+          <div className="h-full w-full relative">
             <Image
               src="/images/bakery.jpg"
-              alt="/"
-              width={600}
-              height={200}
-              className="h-full w-full bg-cover bg-center mr-5 transition-transform duration-300 hover:scale-110"
+              alt="Bakery"
+              fill
+              className="object-cover object-center transition-transform duration-300 hover:scale-110"
             />
           </div>
           <div className="absolute bottom-0 h-20 w-full flex items-center justify-between px-8  bg-white">
@@ -81,10 +92,13 @@ const Categories = () => {
 
             <FaArrowRight className="text-gray-400" />
           </div>
-        </div>
+        </Link>
       </div>
       <div className="mt-7">
-        <button className=" flex items-center gap-4 bg-black text-white  py-4 px-8 rounded-2xl">
+        <button
+          onClick={() => onToggle("cartegories_modal")}
+          className="flex items-center gap-4 bg-black text-white py-4 px-8 rounded-2xl hover:bg-gray-800 transition-all cursor-pointer"
+        >
           View All Categories
           <span>
             <FaArrowRight className="text-white" />

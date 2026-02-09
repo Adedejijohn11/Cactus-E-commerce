@@ -5,6 +5,7 @@ import "./globals.css";
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/navbar";
 import { GlobalContextProvider } from "@/components/context/globalContext";
+import { ConvexProvider } from "@/components/providers/ConvexProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,15 +28,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overflow-x-hidden">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased `}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
-        <GlobalContextProvider>
-          <Navbar />
-          {children}
-          <Footer />
-        </GlobalContextProvider>
+        <div className="w-full overflow-x-hidden">
+          <ConvexProvider>
+            <GlobalContextProvider>
+              <Navbar />
+              {children}
+              <Footer />
+            </GlobalContextProvider>
+          </ConvexProvider>
+        </div>
       </body>
     </html>
   );
