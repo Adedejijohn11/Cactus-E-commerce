@@ -83,13 +83,13 @@ const Promosection = () => {
                   ? Math.round(
                       ((product.originalPrice - product.price) /
                         product.originalPrice) *
-                        100
+                        100,
                     )
                   : 0;
               return (
                 <div
                   key={product._id}
-                  className="scale-75 w-1/2 flex-shrink-0 flex-grow-0 flex justify-center"
+                  className="scale-75 w-1/2 shrink-0 grow-0 flex justify-center"
                 >
                   <ProductCard product={product} discount={discount} />
                 </div>
